@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-class Pack
+module Bakery
+  class Pack
+  end
 end
