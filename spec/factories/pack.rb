@@ -3,7 +3,9 @@
 FactoryGirl.define do
   factory :pack, class: Bakery::Pack do
     code 'CODE'
-    quantity 5
     price 9.99
+    quantity 5
+
+    initialize_with { new(code: code, price: price, quantity: quantity) }
   end
 end
