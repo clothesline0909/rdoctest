@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 
 # Gems for development.
 group :development do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
   gem 'rubocop'
 end
 
