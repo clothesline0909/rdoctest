@@ -61,6 +61,12 @@
   
     <li><a href="./Gemfile.html">Gemfile</a>
   
+    <li><a href="./Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="./Guardfile.html">Guardfile</a>
+  
+    <li><a href="./README_md.html">README</a>
+  
   </ul>
 </div>
 
@@ -69,7 +75,22 @@
 
 <main role="main" aria-label="Page Gemfile">
 
-<p>source “<a href="https://rubygems.org">rubygems.org</a>”</p>
+<p>source &#39;<a href="https://rubygems.org">rubygems.org</a>&#39;</p>
+
+<p># Gems for development. group :development do</p>
+
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;rubocop&#39;</span>
+</pre>
+
+<p>end</p>
+
+<p># Gems for testing. group :test do</p>
+
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;factory_girl&#39;</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;rspec&#39;</span>
+</pre>
+
+<p>end</p>
 </main>
 
 
