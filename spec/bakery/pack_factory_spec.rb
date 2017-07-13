@@ -4,32 +4,48 @@ RSpec.describe Bakery::PackFactory do
   subject { build :pack_factory }
 
   describe '#build' do
-    let(:pack_config) do
-      [
-        { code: 'CODE', price: 9.99, quantity: 5 },
-        { code: 'CODE', price: 9.99, quantity: 5 },
-        { code: 'CODE', price: 9.99, quantity: 5 }
-      ]
+    context 'with valid pack config' do
+      let(:pack_config) do
+        [
+          { code: 'CODE', price: 9.99, quantity: 5 },
+          { code: 'CODE', price: 9.99, quantity: 5 },
+          { code: 'CODE', price: 9.99, quantity: 5 }
+        ]
+      end
+
+      it 'returns 3 objects' do
+        objects = subject.build(pack_config)
+        expect(objects.length).to eq 3
+      end
+
+      it 'returns objects that respond to #code' do
+        object = subject.build(pack_config).first
+        expect(object).to respond_to :code
+      end
+
+      it 'returns objects that respond to #price' do
+        object = subject.build(pack_config).first
+        expect(object).to respond_to :price
+      end
+
+      it 'returns objects that respond to #quantity' do
+        object = subject.build(pack_config).first
+        expect(object).to respond_to :quantity
+      end
     end
 
-    it 'returns 3 objects' do
-      objects = subject.build(pack_config)
-      expect(objects.length).to eq 3
-    end
+    context 'with invalid pack config' do
+      let(:pack_config) do
+        [
+          { invalid_config: 'INVALID' }
+        ]
+      end
 
-    it 'returns objects that respond to #code' do
-      object = subject.build(pack_config).first
-      expect(object).to respond_to :code
-    end
-
-    it 'returns objects that respond to #price' do
-      object = subject.build(pack_config).first
-      expect(object).to respond_to :price
-    end
-
-    it 'returns objects that respond to #quantity' do
-      object = subject.build(pack_config).first
-      expect(object).to respond_to :quantity
+      it 'raises an error' do
+        expect{
+          subject.build(pack_config)
+        }.to raise_error Bakery::InvalidPackConfig
+      end
     end
   end
 end
