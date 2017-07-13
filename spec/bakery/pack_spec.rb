@@ -1,23 +1,23 @@
 # frozen_string_literal: true
 
 RSpec.describe Bakery::Pack do
-  let(:pack) { build :pack }
+  subject { build :pack }
 
-  describe '.code' do
+  describe '#code' do
     it 'returns the code' do
-      expect(pack.code).to eq 'CODE'
+      expect(subject.code).to eq 'CODE'
     end
   end
 
-  describe '.quantity' do
+  describe '#quantity' do
     it 'returns the quantity' do
-      expect(pack.quantity).to eq 5
+      expect(subject.quantity).to eq 5
     end
   end
 
-  describe '.price' do
+  describe '#price' do
     it 'returns the price' do
-      expect(pack.price).to eq 9.99
+      expect(subject.price).to eq 9.99
     end
   end
 end
