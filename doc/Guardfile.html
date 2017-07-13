@@ -74,6 +74,22 @@
 </nav>
 
 <main role="main" aria-label="Page Guardfile">
+
+<p>guard :rspec, cmd: &#39;bundle exec rspec&#39; do</p>
+
+<pre class="ruby"><span class="ruby-comment"># Watch for any changes to spec files and run them again.</span>
+<span class="ruby-identifier">watch</span>(<span class="ruby-regexp">%r{^spec/.+_spec\.rb$}</span>)
+
+<span class="ruby-comment"># Watch for changes to library files and run associated spec.</span>
+<span class="ruby-identifier">watch</span>(<span class="ruby-regexp">%r{^lib/(.+)\.rb$}</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;spec/lib/#{m[1]}_spec.rb&quot;</span> }
+
+<span class="ruby-comment"># Watch for changes to the spec config and run all specs.</span>
+<span class="ruby-identifier">watch</span>(<span class="ruby-string">&#39;spec/config&#39;</span>) { <span class="ruby-string">&#39;spec&#39;</span> }
+<span class="ruby-identifier">watch</span>(<span class="ruby-string">&#39;spec/factories&#39;</span>) { <span class="ruby-string">&#39;spec&#39;</span> }
+<span class="ruby-identifier">watch</span>(<span class="ruby-string">&#39;spec/spec_helper.rb&#39;</span>) { <span class="ruby-string">&#39;spec&#39;</span> }
+</pre>
+
+<p>end</p>
 </main>
 
 
