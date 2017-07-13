@@ -95,6 +95,7 @@ DEPENDENCIES
   guard
   guard-rspec
   guard-rubocop
+  pry
   rspec
   rubocop
 
