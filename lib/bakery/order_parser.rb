@@ -9,8 +9,8 @@ module Bakery
     LINE_REGEXP = /(\d+)\s+(\w+)/
 
     ##
-    # This method takes a filepath of a valid order. The order is parsed and
-    # lines are returned.
+    # This method takes the filepath of a valid order. The order is parsed and
+    # Line objects are returned.
     def parse(filepath)
       raise Bakery::InvalidFilepath unless File.exist?(filepath)
 
