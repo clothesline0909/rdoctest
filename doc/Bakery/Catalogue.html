@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Bakery::PackFactory - RDoc Documentation</title>
+<title>class Bakery::Catalogue - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -71,7 +71,9 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-build">#build</a>
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-search_by_code">#search_by_code</a>
     
   </ul>
 </div>
@@ -79,14 +81,14 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-Bakery::PackFactory">
-  <h1 id="class-Bakery::PackFactory" class="class">
-    class Bakery::PackFactory
+<main role="main" aria-labelledby="class-Bakery::Catalogue">
+  <h1 id="class-Bakery::Catalogue" class="class">
+    class Bakery::Catalogue
   </h1>
 
   <section class="description">
     
-<p>This class is a utility for creating Packs.</p>
+<p>This class represents a catalogue of items.</p>
 
   </section>
 
@@ -103,17 +105,17 @@
     
 
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
-         <h3>Public Instance Methods</h3>
+         <h3>Public Class Methods</h3>
        </header>
 
     
-      <div id="method-i-build" class="method-detail ">
+      <div id="method-c-new" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">build</span><span
-            class="method-args">(pack_config)</span>
+          <span class="method-name">new</span><span
+            class="method-args">(args)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -122,26 +124,57 @@
 
         <div class="method-description">
           
-          <p>This method builds an array of packs from a <code>pack_config</code> array.
-The format of pack_config is:</p>
-
-<pre class="ruby"><span class="ruby-identifier">pack_config</span> = [
-  { <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;CODE&#39;</span>, <span class="ruby-identifier">price</span><span class="ruby-operator">:</span> <span class="ruby-value">9.99</span>, <span class="ruby-identifier">quantity</span><span class="ruby-operator">:</span> <span class="ruby-value">5</span>}
-]
-</pre>
+          <p>Creates a new catalogue with <code>items</code>.</p>
           
           
 
           
-          <div class="method-source-code" id="build-source">
-            <pre><span class="ruby-comment"># File lib/bakery/pack_factory.rb, line 13</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">build</span>(<span class="ruby-identifier">pack_config</span>)
-  <span class="ruby-identifier">pack_config</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">config</span><span class="ruby-operator">|</span>
-    <span class="ruby-comment"># Raise exception if invalid config is passed.</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bakery</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidPackConfig</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">valid_config?</span>(<span class="ruby-identifier">config</span>)
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/bakery/catalogue.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">args</span>)
+  <span class="ruby-ivar">@items</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">:items</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
 
-    <span class="ruby-identifier">build_pack</span>(<span class="ruby-identifier">config</span>)
-  <span class="ruby-keyword">end</span>
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-search_by_code" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">search_by_code</span><span
+            class="method-args">(code)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This method searches the catalogue for all items with a matchine
+<code>code</code>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="search_by_code-source">
+            <pre><span class="ruby-comment"># File lib/bakery/catalogue.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">search_by_code</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">code</span> }
 <span class="ruby-keyword">end</span></pre>
           </div>
           

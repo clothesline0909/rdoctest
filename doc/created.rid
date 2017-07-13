@@ -1,14 +1,18 @@
-Thu, 13 Jul 2017 21:01:36 +1000
-./lib/bakery.rb	Thu, 13 Jul 2017 20:56:16 +1000
-./lib/bakery/pack_factory.rb	Thu, 13 Jul 2017 21:01:29 +1000
+Thu, 13 Jul 2017 21:56:48 +1000
+./lib/bakery.rb	Thu, 13 Jul 2017 21:45:02 +1000
+./lib/bakery/pack_factory.rb	Thu, 13 Jul 2017 21:43:17 +1000
+./lib/bakery/catalogue.rb	Thu, 13 Jul 2017 21:56:32 +1000
+./lib/bakery/exceptions.rb	Thu, 13 Jul 2017 21:44:28 +1000
 ./lib/bakery/pack.rb	Thu, 13 Jul 2017 20:17:33 +1000
-./Gemfile	Thu, 13 Jul 2017 20:17:33 +1000
+./Gemfile	Thu, 13 Jul 2017 21:36:49 +1000
 ./Guardfile	Thu, 13 Jul 2017 20:17:33 +1000
-./Gemfile.lock	Thu, 13 Jul 2017 20:17:33 +1000
+./Gemfile.lock	Thu, 13 Jul 2017 21:36:02 +1000
 ./README.md	Thu, 13 Jul 2017 20:17:33 +1000
 ./spec/factories/pack_factory.rb	Thu, 13 Jul 2017 20:48:33 +1000
+./spec/factories/catalogue.rb	Thu, 13 Jul 2017 21:52:43 +1000
 ./spec/factories/pack.rb	Thu, 13 Jul 2017 20:17:33 +1000
 ./spec/config/factory_girl.rb	Thu, 13 Jul 2017 20:17:33 +1000
 ./spec/spec_helper.rb	Thu, 13 Jul 2017 20:17:33 +1000
-./spec/bakery/pack_factory_spec.rb	Thu, 13 Jul 2017 20:55:57 +1000
+./spec/bakery/pack_factory_spec.rb	Thu, 13 Jul 2017 21:43:53 +1000
 ./spec/bakery/pack_spec.rb	Thu, 13 Jul 2017 20:51:39 +1000
+./spec/bakery/catalogue_spec.rb	Thu, 13 Jul 2017 21:52:25 +1000

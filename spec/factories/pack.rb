@@ -8,4 +8,8 @@ FactoryGirl.define do
 
     initialize_with { new(code: code, price: price, quantity: quantity) }
   end
+
+  factory :pack_with_different_code, parent: :pack do
+    code 'CODE2'
+  end
 end

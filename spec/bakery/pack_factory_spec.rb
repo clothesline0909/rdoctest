@@ -42,9 +42,9 @@ RSpec.describe Bakery::PackFactory do
       end
 
       it 'raises an error' do
-        expect{
+        expect do
           subject.build(pack_config)
-        }.to raise_error Bakery::InvalidPackConfig
+        end.to raise_error Bakery::InvalidPackConfig
       end
     end
   end
