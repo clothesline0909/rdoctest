@@ -10,10 +10,20 @@ RSpec.describe Bakery::OrderParser do
           lines = subject.parse('spec/support/order.txt')
           expect(lines.count).to eq 3
         end
+
+        it 'returns objects that respond to code' do
+          line = subject.parse('spec/support/order.txt').first
+          expect(line).to respond_to :code
+        end
+
+        it 'returns objects that respond to quantity' do
+          line = subject.parse('spec/support/order.txt').first
+          expect(line).to respond_to :quantity
+        end
       end
 
       context 'with an invalid order' do
-        it 'returns 3 lines' do
+        it 'raises an InvalidOrderFormat exception' do
           expect do
             subject.parse('spec/support/invalid_order.txt')
           end.to raise_error Bakery::InvalidOrderFormat
@@ -22,7 +32,7 @@ RSpec.describe Bakery::OrderParser do
     end
 
     context 'with an invalid filepath' do
-      it 'raises an exception' do
+      it 'raises an InvalidFilepath exception' do
         expect do
           subject.parse('invalid')
         end.to raise_error Bakery::InvalidFilepath
