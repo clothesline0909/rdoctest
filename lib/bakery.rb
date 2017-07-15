@@ -6,6 +6,7 @@ require_relative 'bakery/line'
 require_relative 'bakery/order_parser'
 require_relative 'bakery/pack'
 require_relative 'bakery/pack_factory'
+require_relative 'bakery/receipt_builder'
 
 ##
 

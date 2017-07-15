@@ -12,4 +12,9 @@ FactoryGirl.define do
   factory :pack_with_different_code, parent: :pack do
     code 'CODE2'
   end
+
+  factory :pack_with_different_price_and_quantity, parent: :pack do
+    price 16.99
+    quantity 10
+  end
 end

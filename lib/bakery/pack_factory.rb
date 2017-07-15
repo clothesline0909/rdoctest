@@ -2,7 +2,7 @@
 
 module Bakery
   ##
-  # This class is a utility for creating Packs.
+  # This class represents a utility for creating Packs.
   class PackFactory
     ##
     # This method builds an array of packs from a +pack_config+ array.
@@ -11,6 +11,9 @@ module Bakery
     #   pack_config = [
     #     { code: 'CODE', price: 9.99, quantity: 5}
     #   ]
+    #
+    # This method raises an InvalidPackConfig exception if +pack_config+
+    # doesn't have the correct format.
     def build(pack_config)
       pack_config.map do |config|
         # Raise exception if invalid config is passed.
