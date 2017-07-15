@@ -47,7 +47,8 @@ module Bakery
     ##
     # This method builds the summary for an array of +objects+.
     def summary_text(objects)
-      "#{total_quantity(objects)} #{objects.first.code} $#{total_price(objects)}"
+      "#{total_quantity(objects)} #{objects.first.code} "\
+      "$#{total_price(objects)}"
     end
 
     ##
@@ -81,7 +82,7 @@ module Bakery
         quantity = object.quantity
 
         # Get all objects with this quantity.
-        group = objects.select { |object| object.quantity == quantity }
+        group = objects.select { |obj| obj.quantity == quantity }
 
         groups << group
       end
