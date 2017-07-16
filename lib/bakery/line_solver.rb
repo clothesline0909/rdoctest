@@ -51,9 +51,7 @@ module Bakery
     # can't be satisfied for that quantity, it removes the object and tries with
     # the next largest object. If it reaches the end of the objects array and
     # none fit into the desired quantity, then it raises a CantSatisfyOrder
-    # exception. The CantSatisfyOrder exception is rescued by higher levels of
-    # the recursive function. When the exception is caught, the last object
-    # added to the order is removed and it moves on to the next largest.
+    # exception.
     def get_order(objects, quantity)
       order = []
 

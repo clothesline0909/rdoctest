@@ -73,6 +73,8 @@
     
     <li ><a href="#method-i-parse">#parse</a>
     
+    <li ><a href="#method-i-parse_line">#parse_line</a>
+    
   </ul>
 </div>
 
@@ -136,14 +138,17 @@
 
         <div class="method-description">
           
-          <p>This method takes the filepath of a valid order. The order is parsed and <a
-href="Line.html">Line</a> objects are returned.</p>
+          <p>This method takes the <code>filepath</code> of a valid order. The order is
+parsed and <a href="Line.html">Line</a> objects are returned.</p>
+
+<p>This method raises an InvalidFilePath exception if the file specified
+doesn&#39;t exist.</p>
           
           
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/bakery/order_parser.rb, line 13</span>
+            <pre><span class="ruby-comment"># File lib/bakery/order_parser.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">filepath</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bakery</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidFilepath</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">filepath</span>)
 
@@ -151,6 +156,58 @@ href="Line.html">Line</a> objects are returned.</p>
   <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">filepath</span>).<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">parse_line</span>(<span class="ruby-identifier">line</span>)
   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-parse_line" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_line</span><span
+            class="method-args">(line)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This method parses a line of the text file and returns a <a
+href="Line.html">Line</a> object.</p>
+
+<p>This method raises an <a
+href="InvalidOrderFormat.html">InvalidOrderFormat</a> if the order line
+format isn&#39;t valid.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="parse_line-source">
+            <pre><span class="ruby-comment"># File lib/bakery/order_parser.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_line</span>(<span class="ruby-identifier">line</span>)
+  <span class="ruby-comment"># Match the text line with the expected format.</span>
+  <span class="ruby-identifier">matches</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">LINE_REGEXP</span>).<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
+
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidOrderFormat</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">matches</span>
+
+  <span class="ruby-comment"># Create the line from the order.</span>
+  <span class="ruby-constant">Line</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-identifier">matches</span>[<span class="ruby-value">2</span>], <span class="ruby-identifier">quantity</span><span class="ruby-operator">:</span> <span class="ruby-identifier">matches</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           

@@ -73,6 +73,10 @@
     
     <li ><a href="#method-i-build">#build</a>
     
+    <li ><a href="#method-i-build_pack">#build_pack</a>
+    
+    <li ><a href="#method-i-valid_config-3F">#valid_config?</a>
+    
   </ul>
 </div>
 
@@ -86,7 +90,7 @@
 
   <section class="description">
     
-<p>This class is a utility for creating Packs.</p>
+<p>This class represents a utility for creating Packs.</p>
 
   </section>
 
@@ -129,12 +133,16 @@ The format of pack_config is:</p>
   { <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;CODE&#39;</span>, <span class="ruby-identifier">price</span><span class="ruby-operator">:</span> <span class="ruby-value">9.99</span>, <span class="ruby-identifier">quantity</span><span class="ruby-operator">:</span> <span class="ruby-value">5</span>}
 ]
 </pre>
+
+<p>This method raises an <a
+href="InvalidPackConfig.html">InvalidPackConfig</a> exception if
+<code>pack_config</code> doesn&#39;t have the correct format.</p>
           
           
 
           
           <div class="method-source-code" id="build-source">
-            <pre><span class="ruby-comment"># File lib/bakery/pack_factory.rb, line 13</span>
+            <pre><span class="ruby-comment"># File lib/bakery/pack_factory.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">build</span>(<span class="ruby-identifier">pack_config</span>)
   <span class="ruby-identifier">pack_config</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">config</span><span class="ruby-operator">|</span>
     <span class="ruby-comment"># Raise exception if invalid config is passed.</span>
@@ -142,6 +150,89 @@ The format of pack_config is:</p>
 
     <span class="ruby-identifier">build_pack</span>(<span class="ruby-identifier">config</span>)
   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-build_pack" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">build_pack</span><span
+            class="method-args">(config)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This method builds a pack from a <code>config</code> hash.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="build_pack-source">
+            <pre><span class="ruby-comment"># File lib/bakery/pack_factory.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">build_pack</span>(<span class="ruby-identifier">config</span>)
+  <span class="ruby-constant">Pack</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-identifier">config</span>[<span class="ruby-value">:code</span>],
+    <span class="ruby-identifier">price</span><span class="ruby-operator">:</span> <span class="ruby-identifier">config</span>[<span class="ruby-value">:price</span>],
+    <span class="ruby-identifier">quantity</span><span class="ruby-operator">:</span> <span class="ruby-identifier">config</span>[<span class="ruby-value">:quantity</span>]
+  )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-valid_config-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">valid_config?</span><span
+            class="method-args">(config)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This method checks that the <code>config</code> has a valid format.
+<code>config</code> must contain code, price and quantity keys.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="valid_config-3F-source">
+            <pre><span class="ruby-comment"># File lib/bakery/pack_factory.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">valid_config?</span>(<span class="ruby-identifier">config</span>)
+  <span class="ruby-comment"># Get passed keys.</span>
+  <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">config</span>.<span class="ruby-identifier">keys</span>
+
+  <span class="ruby-comment"># Are all required keys present?</span>
+  <span class="ruby-operator">%</span>[<span class="ruby-identifier">code</span> <span class="ruby-identifier">price</span> <span class="ruby-identifier">quantity</span>].<span class="ruby-identifier">all?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">key</span>) }
 <span class="ruby-keyword">end</span></pre>
           </div>
           
