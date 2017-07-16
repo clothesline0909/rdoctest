@@ -10,7 +10,7 @@ module Bakery
 
     ##
     # This is the format string used for building the item line.
-    ITEM_LINE_FORMAT = '%d x %d $%.2f'
+    ITEM_LINE_FORMAT = '  %d x %d $%.2f'
 
     ##
     # This method builds an array of text strings for printing onto the
