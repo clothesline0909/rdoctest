@@ -47,8 +47,8 @@ module Bakery
     ##
     # This method builds the summary for an array of +objects+.
     def summary_text(objects)
-      "#{total_quantity(objects)} #{objects.first.code} "\
-      "$#{total_price(objects)}"
+      "%d %s $%.2f" % 
+        [total_quantity(objects), objects.first.code, total_price(objects)]
     end
 
     ##
