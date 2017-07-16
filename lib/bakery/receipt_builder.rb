@@ -5,6 +5,14 @@ module Bakery
   # This class represents a builder of order receipts for customers.
   class ReceiptBuilder
     ##
+    # This is the format string used for building the summary line.
+    SUMMARY_LINE_FORMAT = '%d %s $%.2f'
+
+    ##
+    # This is the format string used for building the item line.
+    ITEM_LINE_FORMAT = '%d x %d $%.2f'
+
+    ##
     # This method builds an array of text strings for printing onto the
     # receipt. It accepts an array of orderable +objects+.
     #
@@ -47,14 +55,23 @@ module Bakery
     ##
     # This method builds the summary for an array of +objects+.
     def summary_text(objects)
-      "%d %s $%.2f" % 
-        [total_quantity(objects), objects.first.code, total_price(objects)]
+      format(
+        SUMMARY_LINE_FORMAT,
+        total_quantity(objects),
+        objects.first.code,
+        total_price(objects)
+      )
     end
 
     ##
     # This method builds the text for a +group+ of objects.
     def group_text(group)
-      "  #{group.count} x #{group.first.quantity} $#{group.first.price}"
+      format(
+        ITEM_LINE_FORMAT,
+        group.count,
+        group.first.quantity,
+        group.first.price
+      )
     end
 
     ##
