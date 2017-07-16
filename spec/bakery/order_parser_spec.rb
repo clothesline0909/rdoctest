@@ -11,14 +11,14 @@ RSpec.describe Bakery::OrderParser do
           expect(lines.count).to eq 3
         end
 
-        it 'returns objects that respond to code' do
+        it 'returns objects that have the correct code' do
           line = subject.parse('spec/support/order.txt').first
-          expect(line).to respond_to :code
+          expect(line.code).to eq 'CODE'
         end
 
-        it 'returns objects that respond to quantity' do
+        it 'returns objects that have the correct quantity' do
           line = subject.parse('spec/support/order.txt').first
-          expect(line).to respond_to :quantity
+          expect(line.quantity).to eq 5
         end
       end
 

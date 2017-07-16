@@ -18,19 +18,19 @@ RSpec.describe Bakery::PackFactory do
         expect(objects.length).to eq 3
       end
 
-      it 'returns objects that respond to #code' do
+      it 'returns objects that have the correct code' do
         object = subject.build(pack_config).first
-        expect(object).to respond_to :code
+        expect(object.code).to eq 'CODE'
       end
 
-      it 'returns objects that respond to #price' do
+      it 'returns objects that have the correct price' do
         object = subject.build(pack_config).first
-        expect(object).to respond_to :price
+        expect(object.price).to eq 9.99
       end
 
-      it 'returns objects that respond to #quantity' do
+      it 'returns objects that have the correct quantity' do
         object = subject.build(pack_config).first
-        expect(object).to respond_to :quantity
+        expect(object.quantity).to eq 5
       end
     end
 

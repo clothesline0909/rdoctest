@@ -37,7 +37,7 @@ module Bakery
       raise InvalidOrderFormat unless matches
 
       # Create the line from the order.
-      Line.new(code: matches[1], quantity: matches[0])
+      Line.new(code: matches[2], quantity: matches[1].to_i)
     end
   end
 end
