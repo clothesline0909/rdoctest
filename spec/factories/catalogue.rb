@@ -13,6 +13,10 @@ FactoryGirl.define do
     association :pack_with_different_price_and_quantity, strategy: :build
     association :pack_with_quantity_3, strategy: :build
 
-    initialize_with { new(items: [pack, pack_with_different_price_and_quantity, pack_with_quantity_3]) }
+    initialize_with do
+      new(items: [
+        pack, pack_with_different_price_and_quantity, pack_with_quantity_3
+      ])
+    end
   end
 end

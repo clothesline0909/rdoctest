@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe Bakery::LineSolver do
-
   describe '#solve' do
     context 'with simple catalogue' do
       subject { build :line_solver }
