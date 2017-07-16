@@ -75,7 +75,7 @@ module Bakery
       groups = []
 
       objects.each do |object|
-        # Has object already been added to a group.
+        # Has object already been added to a group?
         next if groups.flatten.include?(object)
 
         # Get quantity.

@@ -2,6 +2,11 @@
 
 module Bakery
   ##
+  # This exception is raised when the LineSolver.solve method can't find
+  # a solution for the ordered line.
+  class CantSatisfyOrder < StandardError; end
+  
+  ##
   # This exception is raised when the ReceiptBuilder.build_line method is
   # passed objects with different +codes+.
   class InconsistentCodes < StandardError; end

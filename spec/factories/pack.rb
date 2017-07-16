@@ -17,4 +17,8 @@ FactoryGirl.define do
     price 16.99
     quantity 10
   end
+
+  factory :pack_with_quantity_3, parent: :pack do
+    quantity 3
+  end
 end
